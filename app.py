@@ -17,6 +17,10 @@ def create_app():
     app.register_blueprint(simulacion_bp)
     app.register_blueprint(solicitudes_bp)
 
+    @app.route("/")
+    def health():
+        return {"mensaje": "Roda API v1.0.0"}
+
     with app.app_context():
         db.create_all()
 
